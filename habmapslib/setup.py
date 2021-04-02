@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="habmapslib",
-    version="1.0.0",
+    version="1.0.1",
     author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
@@ -18,8 +18,14 @@ setuptools.setup(
         'paho_mqtt>=1.5.1'
     ],
     classifiers=[
-        "Programming Language :: Python :: 3",
+        'Intended Audience :: Developers',
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.9.1',
     ],
 ) 
