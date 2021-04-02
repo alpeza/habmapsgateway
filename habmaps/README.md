@@ -37,3 +37,11 @@ while True:
         BasestationPosition=[5, 3]))
     time.sleep(5)
 ```
+
+## Logging
+
+Para configurar los logs
+
+```
+export HABLIB_LOGLEVEL=DEBUG
+```

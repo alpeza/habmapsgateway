@@ -43,5 +43,5 @@ while True:
 Para configurar los logs
 
 ```
-export HABLIB_LOGLEVEL=DEBUG
+export HABLIB_LOGLEVEL=DEBUG #INFO,ERROR
 ```

@@ -52,7 +52,7 @@ class MapTracker(object):
         threading.Timer(1, self._runAlive).start()
 
     def sendMessage(self, message):
-        logging.info("sending message ...")
+        logging.info("Sending message ...")
         logging.debug(message)
         try:
             self.client.connect(self.mqtt_url,self.mqtt_port,60)

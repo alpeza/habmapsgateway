@@ -37,7 +37,7 @@ class HabMapsMessage(object):
         self.setBasestationId(BasestationId)
         self.setHabPosition(HabPosition)
         self.setBasestationPosition(BasestationPosition)
-        self._track['payload'] = Signals
+        self._track['hab']['payload'] = Signals
 
     def getMessage(self):
         return self._track
