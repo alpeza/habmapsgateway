@@ -1,9 +1,13 @@
-# habmapsgateway
+# habmaps
 
 Librería para el uso de habmaps
 
+## Quick Start
 
-```
+
+Ejemplo de envío de información a la plataforma
+
+```python
 from habmaps import MapTracker, HabMapsMessage
 import time
 
@@ -12,7 +16,8 @@ mt = MapTracker.MapTracker(id="default-station-id",
                            mqtt_port=1883,
                            user='habmaps',
                            password='root')
-mt.startAlive()
+
+mt.startAlive() #Iniciamos la señal de alive que se enviará cada n minutos 
 
 while True:
     mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
