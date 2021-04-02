@@ -1,4 +1,4 @@
-# habmaps
+# habmapslib
 
 Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
@@ -10,13 +10,13 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 1.- Instalamos el cliente de habmaps con
 
 ```
-pip3 install habmaps
+pip3 install habmapslib
 ```
 
 2.- Envíamos información a la plataforma
 
 ```python
-from habmaps import MapTracker, HabMapsMessage
+from habmapslib import MapTracker, HabMapsMessage
 import time
 
 mt = MapTracker.MapTracker(id="default-station-id", #Nombre de la estación base
