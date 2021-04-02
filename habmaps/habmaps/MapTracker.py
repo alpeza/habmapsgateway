@@ -5,11 +5,12 @@ from datetime import datetime, timedelta
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logging.basicConfig(level=LOGLEVEL, format=FORMATTER)
+
 class MapTracker(object):
     """Cliente de MQTT para maptracker"""
     def __init__(self, id="default-station-id",
                  mqtt_url="localhost",
-                 mqtt_port=1883,s
+                 mqtt_port=1883,
                  publish="hablistener",
                  alive=60,
                  user='habmaps',
