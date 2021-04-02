@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="habmaps",
+    name="habmapslib",
     version="1.0.0",
     author="Alpeza",
     author_email="",

@@ -1,4 +1,4 @@
-from habmaps import MapTracker, HabMapsMessage
+from habmapslib import MapTracker, HabMapsMessage
 import time
 
 mt = MapTracker.MapTracker(id="hb-basestation-1",

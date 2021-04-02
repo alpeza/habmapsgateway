@@ -1,4 +1,4 @@
-from habmaps import MapTracker,HabMapsMessage
+from habmapslib import MapTracker,HabMapsMessage
 
 hm = HabMapsMessage.HabMapsMessage()
 mt = MapTracker.MapTracker(id="default-station-id",
