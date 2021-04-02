@@ -2,7 +2,7 @@
 
 Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
-* [GitHab](https://github.com/alpeza/habmapsgateway)
+* [GitHub](https://github.com/alpeza/habmapsgateway)
 * [Pypi](https://pypi.org/project/habmapslib/#description)
 
 ## Quick Start

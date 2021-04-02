@@ -9,7 +9,7 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
 1.- Instalamos el cliente de habmaps con
 
-Opción 1:
+Opción 1, valida para `python >= 3.8`.
 ```
 pip3 install habmapslib
 ```
