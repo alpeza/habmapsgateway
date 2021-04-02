@@ -4,8 +4,13 @@ Librería para el uso de habmaps
 
 ## Quick Start
 
+1.- Instalamos el cliente de habmaps con
 
-Ejemplo de envío de información a la plataforma
+```
+pip3 install habmaps
+```
+
+2.- Envíamos información a la plataforma
 
 ```python
 from habmaps import MapTracker, HabMapsMessage

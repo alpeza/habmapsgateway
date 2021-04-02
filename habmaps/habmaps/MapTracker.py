@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import sched, time, threading,os
 import json,logging, traceback
 from datetime import datetime, timedelta
-LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
+LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 logging.basicConfig(level=LOGLEVEL)
 class MapTracker(object):
     """Cliente de MQTT para maptracker"""

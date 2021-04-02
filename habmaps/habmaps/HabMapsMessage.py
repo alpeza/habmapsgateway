@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import os
 import json,logging
-LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
+LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 logging.basicConfig(level=LOGLEVEL)
 
 class HabMapsMessage(object):
