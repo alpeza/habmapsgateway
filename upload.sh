@@ -1,6 +1,7 @@
 git add .
 git commit -m "update"
 git push
+cp README.md habmaps/README.md
 cd habmaps
 python3 setup.py build
 python3 setup.py install
