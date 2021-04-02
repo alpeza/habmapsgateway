@@ -3,12 +3,13 @@ import sched, time, threading,os
 import json,logging, traceback
 from datetime import datetime, timedelta
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
-logging.basicConfig(level=LOGLEVEL)
+FORMATTER = os.environ.get('HABLIB_FORMAT', "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=LOGLEVEL, format=FORMATTER)
 class MapTracker(object):
     """Cliente de MQTT para maptracker"""
     def __init__(self, id="default-station-id",
                  mqtt_url="localhost",
-                 mqtt_port=1883,
+                 mqtt_port=1883,s
                  publish="hablistener",
                  alive=60,
                  user='habmaps',
