@@ -29,15 +29,15 @@ mt.startAlive() #Iniciamos la señal de alive que se enviará cada n minutos
 
 while True:
     mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
-        TimeStamp='2021-04-02 15:33:43',
+        TimeStamp='2021-04-02 15:33:43', #El timestamp del hab en formato string datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         HabId='Mi-Hab',
         BasestationId='Mi-Estacion-base',
-        HabPosition=[5, 3],
-        Signals={
+        HabPosition=[5, 3], #Array de [ latitud, longitud]
+        Signals={ #Payload de sensores clave: Nombre del sensor, valor: valor del sensor
             "miSensorUno": 122.4,
             "miSensorDos": 400.5
         },
-        BasestationPosition=[5, 3]))
+        BasestationPosition=[5, 3])) #Array opcional de [ latitud, longitud] de posición de la estacion base
     time.sleep(5)
 ```
 
