@@ -29,9 +29,9 @@ setuptools.setup(
     ],
     python_requires='>=3.6, <4',
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/alpeza/habmapsgateway',
-        'Funding': 'https://github.com/alpeza/habmapsgateway',
-        'Say Thanks!': 'https://github.com/alpeza/habmapsgateway',
+        'Bug Reports': 'https://github.com/alpeza/habmapsgateway/issues',
+        'Funding': 'https://github.com/alpeza/habmapsgateway/issues',
+        'Say Thanks!': 'https://github.com/alpeza/habmapsgateway/issues',
         'Source': 'https://github.com/alpeza/habmapsgateway',
     },
 ) 
