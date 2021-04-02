@@ -9,8 +9,17 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
 1.- Instalamos el cliente de habmaps con
 
+Opción 1:
 ```
 pip3 install habmapslib
+```
+
+Opción 2:
+
+```
+git clone https://github.com/alpeza/habmapsgateway.git
+cd habmapsgateway/habmapslib
+sudo python3 setup.py install
 ```
 
 2.- Envíamos información a la plataforma
