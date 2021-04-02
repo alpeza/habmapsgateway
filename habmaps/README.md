@@ -1,4 +1,4 @@
-# habmaps
+# Habmaps Gateway Lib
 
 Librería para el uso de habmaps
 
@@ -40,8 +40,31 @@ while True:
 
 ## Logging
 
-Para configurar los logs
+Para configurar los logs se realiza por medio de variables de entorno
 
-```
+```bash
 export HABLIB_LOGLEVEL=DEBUG #INFO,ERROR
+export HABLIB_FORMAT="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+export HABLIB_LOGFILE="/tmp/hablibclient.log"
+```
+
+## Error Handling
+
+```python
+    rc = mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
+        TimeStamp='2021-04-02 15:33:43',
+        HabId='Mi-Hab',
+        BasestationId='Mi-Estacion-base',
+        HabPosition=[5, 3],
+        Signals={
+            "miSensorUno": 122.4,
+            "miSensorDos": 400.5
+        },
+        BasestationPosition=[5, 3]))
+    if rc['isOK']:
+        print("El mensaje se ha enviado correctamente")
+    else:
+        print("Ha existido algun error en la transmision")
+        print(rc['reason'])
+
 ```

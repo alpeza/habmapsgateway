@@ -9,7 +9,7 @@ mt = MapTracker.MapTracker(id="hb-basestation-1",
 mt.startAlive()
 
 while True:
-    mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
+    rc = mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
         TimeStamp='2021-04-02 15:33:43',
         HabId='Mi-Hab',
         HabPosition=[5, 3],
@@ -18,4 +18,9 @@ while True:
             "miSensorDos": 400.5
         },
         BasestationPosition=[5, 3]))
+    if rc['isOK']:
+        print("El mensaje se ha enviado correctamente ... ")
+    else:
+        print("Ha existido algun error en la transmision ...")
+        print(rc['reason'])
     time.sleep(5)

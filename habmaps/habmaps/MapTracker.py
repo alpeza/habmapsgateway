@@ -61,13 +61,13 @@ class MapTracker(object):
             self.client.connect(self.mqtt_url,self.mqtt_port,60)
             self.client.publish(self.topic, json.dumps(message));
             self.client.disconnect();
-            return 0
+            return {"isOK": True, "reason": ""}
         except Exception as e:
             logging.error(traceback.print_exc())
-            return 1
+            return {"isKO": True, "reason": str(e)}
 
     def sendHabMessage(self,hm):
         hm.setBasestationId(self.id)
         if hm.isValidMessage() == False:
             raise ValueError("Please inform all required data")
-        self.sendMessage(hm.getMessage())
+        return self.sendMessage(hm.getMessage())
