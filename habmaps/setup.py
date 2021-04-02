@@ -6,13 +6,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="habmaps",
-    version="2.1.0",
-    author="",
+    version="1.0.0",
+    author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/alpeza/habmapsgateway",
     packages=setuptools.find_packages(),
     install_requires=[
         'paho_mqtt>=1.5.1'
