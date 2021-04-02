@@ -30,8 +30,7 @@ mt.startAlive() #Iniciamos la señal de alive que se enviará cada n minutos
 while True:
     mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
         TimeStamp='2021-04-02 15:33:43', #El timestamp del hab en formato string datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        HabId='Mi-Hab',
-        BasestationId='Mi-Estacion-base',
+        HabId='Mi-Hab', #Nombre del hab que se esta monitorizando, vendrá de la traza q transmita el hab
         HabPosition=[5, 3], #Array de [ latitud, longitud]
         Signals={ #Payload de sensores clave: Nombre del sensor, valor: valor del sensor
             "miSensorUno": 122.4,

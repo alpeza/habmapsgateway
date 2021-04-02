@@ -19,10 +19,10 @@ pip3 install habmaps
 from habmaps import MapTracker, HabMapsMessage
 import time
 
-mt = MapTracker.MapTracker(id="default-station-id",
-                           mqtt_url="localhost",
-                           mqtt_port=1883,
-                           user='habmaps',
+mt = MapTracker.MapTracker(id="default-station-id", #Nombre de la estación base
+                           mqtt_url="localhost",    #DNS o IP del servidor MQTT
+                           mqtt_port=1883,          #Puerto del servidor MQTT
+                           user='habmaps',          #Credenciales de acceso al broker MQTT
                            password='root')
 
 mt.startAlive() #Iniciamos la señal de alive que se enviará cada n minutos 
