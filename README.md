@@ -2,6 +2,9 @@
 
 Librería para el uso de habmaps
 
+* [GitHab](https://github.com/alpeza/habmapsgateway)
+* [Pypi](https://pypi.org/project/habmaps/#description)
+
 ## Quick Start
 
 1.- Instalamos el cliente de habmaps con
