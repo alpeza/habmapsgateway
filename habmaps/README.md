@@ -1,3 +1,6 @@
 
  ## habmaps
- This is the starter text for a python package.
+
+Cliente de acceso a habmaps
+
+Codigo fuente [GitHub](https://github.com/alpeza/habmapsgateway)
