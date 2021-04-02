@@ -64,7 +64,7 @@ class MapTracker(object):
             return {"isOK": True, "reason": ""}
         except Exception as e:
             logging.error(traceback.print_exc())
-            return {"isKO": True, "reason": str(e)}
+            return {"isOK": True, "reason": str(e)}
 
     def sendHabMessage(self,hm):
         hm.setBasestationId(self.id)
