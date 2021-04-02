@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="habmapslib",
-    version="1.0.1",
+    version="1.0.2",
     author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
@@ -27,4 +27,11 @@ setuptools.setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9'
     ],
+    python_requires='>=3.6, <4',
+    project_urls={  # Optional
+        'Bug Reports': 'https://github.com/alpeza/habmapsgateway',
+        'Funding': 'https://github.com/alpeza/habmapsgateway',
+        'Say Thanks!': 'https://github.com/alpeza/habmapsgateway',
+        'Source': 'https://github.com/alpeza/habmapsgateway',
+    },
 ) 
