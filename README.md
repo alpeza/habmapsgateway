@@ -11,6 +11,7 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
 Opción 1, valida para `python >= 3.8`.
 ```
+curl https://bootstrap.pypa.io/get-pip.py | python #Updateamos el repo de pypi
 pip3 install habmapslib
 ```
 
