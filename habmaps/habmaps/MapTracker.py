@@ -56,7 +56,7 @@ class MapTracker(object):
 
     def sendMessage(self, message):
         logging.info("Sending message ...")
-        logging.debug(message)
+        logging.debug(json.dumps(message))
         try:
             self.client.connect(self.mqtt_url,self.mqtt_port,60)
             self.client.publish(self.topic, json.dumps(message));
