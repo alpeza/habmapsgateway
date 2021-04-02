@@ -3,7 +3,8 @@ import os
 import json,logging
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logging.basicConfig(level=LOGLEVEL, format=FORMATTER)
+LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
+logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE),logging.StreamHandler()])
 
 class HabMapsMessage(object):
     def __init__(self,

@@ -44,4 +44,5 @@ Para configurar los logs
 
 ```
 export HABLIB_LOGLEVEL=DEBUG #INFO,ERROR
+export HABLIB_FORMAT="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 ```
