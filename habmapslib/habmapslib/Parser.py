@@ -8,7 +8,7 @@ LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
 logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE), logging.StreamHandler()])
-
+import traceback
 
 class Parser(object):
     """docstring for Parser."""
@@ -77,6 +77,7 @@ class Parser(object):
         except Exception as e:
             logging.error("Something went wrong ...")
             logging.error(e)
+            logging.error(traceback.format_exc())
 
 
     def run(self):
