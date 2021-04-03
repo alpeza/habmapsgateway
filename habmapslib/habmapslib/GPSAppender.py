@@ -1,4 +1,9 @@
 from . import Appender
+import os,logging
+LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
+FORMATTER = os.environ.get('HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
+LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
+logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE),logging.StreamHandler()])
 
 class GPSAppender(Appender.Appender):
     """docstring for GPSAppender."""
@@ -15,6 +20,8 @@ class GPSAppender(Appender.Appender):
             }
         try:
             values = self.getLastLine(self.path)
+            logging.debug("Readed gps base statio pos: " )
+            logging.debug(values)
             splt = values.split(",")
             return {
                 'lat': splt[0],
