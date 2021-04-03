@@ -36,7 +36,7 @@ class Parser(object):
         if len(trace) != len(definitions):
             logging.error("Invalid frame: " + str(len(trace)) + " != " + str(len(definitions)))
             logging.error(line)
-            return False
+            return None
 
         for el in definitions:
             if el != '':
@@ -67,7 +67,8 @@ class Parser(object):
         # 1.- Parseamos la traza que nos llega de lora
         try:
             hm = self.parseline(txt, self.ch['frame']['format'])
-            self.mt.sendHabMessage(hm)
+            if hm:
+                self.mt.sendHabMessage(hm)
         except Exception as e:
             logging.error("Something went wrong ...")
             logging.error(e)
