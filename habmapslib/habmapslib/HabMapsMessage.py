@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import os
 import json,logging
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
-FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+FORMATTER = os.environ.get('HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
 logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE),logging.StreamHandler()])
 
@@ -34,7 +34,8 @@ class HabMapsMessage(object):
                 }
             }
         }
-        self.setTimeStamp(TimeStamp)
+        if TimeStamp != '':
+            self.setTimeStamp(TimeStamp)
         self.setHabId(HabId)
         self.setBasestationId(BasestationId)
         self.setHabPosition(HabPosition)
@@ -74,19 +75,21 @@ class HabMapsMessage(object):
     def setTimeStamp(self, ts):
         try:
             datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
-            self._tracets = ts
+            self._track['ftime'] = ts
         except ValueError:
             logging.error("Invalid date format")
             raise ValueError("Incorrect data format, should be YYYY-mm-dd H:M:S")
 
 
     def setHabPosition(self, habpos):
-        self._track['hab']['pos']['lat'] = habpos[0]
-        self._track['hab']['pos']['lon'] = habpos[1]
+        self._track['hab']['pos']['lat'] = float(habpos[0])
+        self._track['hab']['pos']['lon'] = float(habpos[1])
 
     def setBasestationPosition(self,bspos):
-        self._track['basestation']['pos']['lat'] = bspos[0]
-        self._track['basestation']['pos']['lon'] = bspos[1]
+        self._track['basestation']['pos']['lat'] = float(bspos[0])
+        self._track['basestation']['pos']['lon'] = float(bspos[1])
+        if len(bspos) == 3 and float(bspos[2]) != 0.0:
+            self.addSignal('BStationHeight',float(bspos[1]))
 
     def addSignal(self,key,value):
         self._track['hab']['payload'][key] = value

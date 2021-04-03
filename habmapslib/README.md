@@ -7,22 +7,24 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
 ## Quick Start
 
-1.- Instalamos el cliente de habmaps con
+__1.- Instalamos el cliente de habmaps con__
 
 Opción 1
-```
+
+```bash
 pip3 install habmapslib
+# para el upgrade pip3 install --upgrade habmapslib
 ```
 
 Opción 2, instalación manual
 
-```
+```bash
 git clone https://github.com/alpeza/habmapsgateway.git
 cd habmapsgateway/habmapslib
 sudo python3 setup.py install
 ```
 
-2.- Envíamos información a la plataforma
+__2.- Envíamos información a la plataforma__
 
 ```python
 from habmapslib import MapTracker, HabMapsMessage
@@ -76,4 +78,26 @@ export HABLIB_LOGFILE="/tmp/hablibclient.log"
     else:
         print("Ha existido algun error en la transmision ...")
         print(rc['reason'])
+```
+
+## CLI File Parser
+
+La librería también se puede emplear a modo de _deamon_ que va leyendo
+de un fichero y transmitiéndolo a habmaps.
+
+```bash
+python3 -m habmapslib.cli --help
+```
+
+1.- Configuramos el programa:
+
+```bash
+python3 -m habmapslib.cli --genconffile > miConfig.yaml
+#Editamos la configuración
+nano miConfig.yaml
+```
+2.- Lanzamos el programa 
+
+```bash
+python3 -m habmapslib.cli --conffile miConfig.yaml
 ```

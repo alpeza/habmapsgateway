@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="habmapslib",
     include_package_data=True,
-    version="1.0.6",
+    version="1.0.10",
     author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
@@ -16,7 +16,9 @@ setuptools.setup(
     url="https://github.com/alpeza/habmapsgateway",
     packages=setuptools.find_packages(),
     install_requires=[
-        'paho_mqtt>=1.5.1'
+        'paho_mqtt>=1.5.1',
+        'click>=7.1.2',
+        'PyYAML>=3.11'
     ],
     classifiers=[
         'Intended Audience :: Developers',
