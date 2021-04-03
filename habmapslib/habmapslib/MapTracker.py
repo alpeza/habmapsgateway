@@ -17,7 +17,7 @@ class MapTracker(object):
                  user='habmaps',
                  password='root'):
         super(MapTracker, self).__init__()
-        logging.info("Starting new MapTracker Client")
+        logging.info("Starting new MapTracker Client ...")
         self.client = mqtt.Client()
         self.client.username_pw_set(username=user,password=password)
 

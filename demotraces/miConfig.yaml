@@ -1,15 +1,15 @@
 
 basestation:
-  id: id-de-mi-estacion
+  id: "id-de-mi-estacion"
   appenders:
-    - name: gps
-      filepath: /fichero/con/tramas/gps.txt
+    - name: "gps"
+      filepath: "/fichero/con/tramas/gps.txt"
 mqtt:
-  url: localhost
-  topic: hablistener
+  url: "localhost"
+  topic: "hablistener"
   port: 1883
-  user: habmaps
-  password: root
+  user: "habmaps"
+  password: "root"
   alive: 60
 frame:
   # Definición de la trama donde

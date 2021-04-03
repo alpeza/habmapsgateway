@@ -18,7 +18,7 @@ class Parser(object):
         self.ch = confHandler.getConfig()
         self.mt = MapTracker.MapTracker(id=self.ch['basestation']['id'],
                                         mqtt_url=self.ch['mqtt']['url'],
-                                        mqtt_port=self.ch['mqtt']['port'],
+                                        mqtt_port=int(self.ch['mqtt']['port']),
                                         user=self.ch['mqtt']['user'],
                                         password=self.ch['mqtt']['password'],
                                         publish=self.ch['mqtt']['topic'],
