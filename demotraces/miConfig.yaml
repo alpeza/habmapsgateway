@@ -1,4 +1,3 @@
-
 basestation:
   id: id-de-mi-estacion
   appenders:
