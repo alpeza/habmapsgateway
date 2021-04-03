@@ -22,7 +22,7 @@ class Parser(object):
                                         user=self.ch['mqtt']['user'],
                                         password=self.ch['mqtt']['password'],
                                         publish=self.ch['mqtt']['topic'],
-                                        alive=int(self.ch['mqtt']['60']))
+                                        alive=int(self.ch['mqtt']['60'])
         #self.mt.startAlive()
 
     def parseline(self, line, definition):
