@@ -10,13 +10,15 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 __1.- Instalamos el cliente de habmaps con__
 
 Opción 1
-```
+
+```bash
 pip3 install habmapslib
+# para el upgrade pip3 install --upgrade habmapslib
 ```
 
 Opción 2, instalación manual
 
-```
+```bash
 git clone https://github.com/alpeza/habmapsgateway.git
 cd habmapsgateway/habmapslib
 sudo python3 setup.py install

@@ -90,5 +90,12 @@ python3 -m habmapslib.cli --help
 1.- Configuramos el programa:
 
 ```bash
-python3 -m habmapslib.cli --genconffile
+python3 -m habmapslib.cli --genconffile > miConfig.yaml
+#Editamos la configuración
+nano miConfig.yaml
+```
+2.- Lanzamos el programa 
+
+```bash
+python3 -m habmapslib.cli --conffile miConfig.yaml
 ```
