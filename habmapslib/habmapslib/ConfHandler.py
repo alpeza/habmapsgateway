@@ -2,7 +2,7 @@ import yaml
 class ConfHandler(object):
     """Clase encargada de cargar la configuración"""
     def __init__(self, file='conf.yaml'):
-        super(Config, self).__init__()
+        super(ConfHandler, self).__init__()
         self.configfile = file
         self.config = {}
         self.load()
