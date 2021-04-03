@@ -1,6 +1,6 @@
 import logging,os
 from datetime import datetime
-from . HMTail
+from . import HMTail
 from . import HabMapsMessage
 from . import MapTracker
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
@@ -26,7 +26,7 @@ class Parser(object):
             logging.error("Invalid frame: " + str(len(trace)) + " != " + str(len(definitions)))
             logging.error(line)
             return False
- 
+
         for el in definitions:
             if el != '':
                 if el == '$time':
