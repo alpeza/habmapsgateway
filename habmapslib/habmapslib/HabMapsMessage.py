@@ -34,7 +34,8 @@ class HabMapsMessage(object):
                 }
             }
         }
-        self.setTimeStamp(TimeStamp)
+        if TimeStamp != '':
+            self.setTimeStamp(TimeStamp)
         self.setHabId(HabId)
         self.setBasestationId(BasestationId)
         self.setHabPosition(HabPosition)
