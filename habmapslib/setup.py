@@ -16,7 +16,9 @@ setuptools.setup(
     url="https://github.com/alpeza/habmapsgateway",
     packages=setuptools.find_packages(),
     install_requires=[
-        'paho_mqtt>=1.5.1'
+        'paho_mqtt>=1.5.1',
+        'click>=7.1.2',
+        'PyYAML>=5.4.1'
     ],
     classifiers=[
         'Intended Audience :: Developers',

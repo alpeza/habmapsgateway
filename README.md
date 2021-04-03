@@ -77,3 +77,9 @@ export HABLIB_LOGFILE="/tmp/hablibclient.log"
         print("Ha existido algun error en la transmision ...")
         print(rc['reason'])
 ```
+
+## CLI File Parser
+
+La librería también se puede emplear a modo de _deamon_ que va leyendo
+de un fichero y transmitiéndolo a habmaps.
+
