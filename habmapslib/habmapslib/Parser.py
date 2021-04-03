@@ -3,7 +3,7 @@ from datetime import datetime
 from . import HMTail
 from . import HabMapsMessage
 from . import MapTracker
-
+from . import GPSAppender
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
@@ -24,7 +24,8 @@ class Parser(object):
                                         alive=int(self.ch['mqtt']['alive']),
                                         password=self.ch['mqtt']['password']
                                         )
-        #self.mt.startAlive()
+        self.gps_appender = GPSAppender.GPSAppender(self.ch)
+        self.mt.startAlive()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""
@@ -68,6 +69,10 @@ class Parser(object):
         try:
             hm = self.parseline(txt, self.ch['frame']['format'])
             if hm:
+                # 2.- Obtenemos la ultima traza de gps
+                pos_gps = self.gps_appender.getValueAsArray()
+                hm.setBasestationPosition(pos_gps)
+                # 3.- Transmitimos el mensaje
                 self.mt.sendHabMessage(hm)
         except Exception as e:
             logging.error("Something went wrong ...")

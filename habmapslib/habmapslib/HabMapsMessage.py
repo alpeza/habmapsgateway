@@ -82,12 +82,14 @@ class HabMapsMessage(object):
 
 
     def setHabPosition(self, habpos):
-        self._track['hab']['pos']['lat'] = habpos[0]
-        self._track['hab']['pos']['lon'] = habpos[1]
+        self._track['hab']['pos']['lat'] = float(habpos[0])
+        self._track['hab']['pos']['lon'] = float(habpos[1])
 
     def setBasestationPosition(self,bspos):
-        self._track['basestation']['pos']['lat'] = bspos[0]
-        self._track['basestation']['pos']['lon'] = bspos[1]
+        self._track['basestation']['pos']['lat'] = float(bspos[0])
+        self._track['basestation']['pos']['lon'] = float(bspos[1])
+        if len(bspos) == 3 and float(bspos[2]) != 0.0:
+            self.addSignal('BStationHeight',float(bspos[1]))
 
     def addSignal(self,key,value):
         self._track['hab']['payload'][key] = value

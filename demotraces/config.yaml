@@ -2,9 +2,6 @@ basestation:
   id: "id-de-mi-estacion"
   appenders:
     gpsappender: "/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender"
-# Si no se quiere emplear el appender dejar a blancos, ej:
-# appenders:
-#   gpsappender: ""
 mqtt:
   url: "localhost"
   topic: "hablistener"
