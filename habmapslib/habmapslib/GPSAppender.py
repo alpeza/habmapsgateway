@@ -4,7 +4,7 @@ class GPSAppender(Appender.Appender):
     """docstring for GPSAppender."""
     def __init__(self, chandler):
         super(GPSAppender, self).__init__()
-        self.path = chandler.getConfig()['basestation']['appenders']['gpsappender']
+        self.path = chandler['basestation']['appenders']['gpsappender']
 
     def readValue(self):
         if self.path == '':
