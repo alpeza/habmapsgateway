@@ -15,7 +15,7 @@ class Parser(object):
 
     def __init__(self, confHandler):
         super(Parser, self).__init__()
-        self.ch = confHandler
+        self.ch = confHandler.getConfig()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""
