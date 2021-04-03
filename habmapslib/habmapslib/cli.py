@@ -11,7 +11,7 @@ def showConfFile():
 @click.option('--conffile', help='Fichero de configuración')
 @click.option('--genconffile', is_flag=True, help='Muestra un fichero de configuración de ejemplo')
 def cline(conffile, genconffile):
-    if conffile:
+    if genconffile:
         showConfFile()
 
 if __name__ == '__main__':
