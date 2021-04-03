@@ -83,3 +83,12 @@ export HABLIB_LOGFILE="/tmp/hablibclient.log"
 La librería también se puede emplear a modo de _deamon_ que va leyendo
 de un fichero y transmitiéndolo a habmaps.
 
+```bash
+python3 -m habmapslib.cli --help
+```
+
+1.- Configuramos el programa:
+
+```bash
+python3 -m habmapslib.cli --genconffile
+```

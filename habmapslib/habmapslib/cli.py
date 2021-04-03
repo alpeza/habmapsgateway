@@ -8,7 +8,7 @@ def showConfFile():
 
 @click.command()
 @click.option('--conffile', help='Fichero de configuración')
-@click.option('--genconffile', default=False, help='Muestra un fichero de configuración de ejemplo')
+@click.option('--genconffile', is_flag=True, help='Muestra un fichero de configuración de ejemplo')
 def cline(conffile, genconffile):
     if conffile:
         showConfFile()
