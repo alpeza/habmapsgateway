@@ -7,7 +7,7 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
 ## Quick Start
 
-1.- Instalamos el cliente de habmaps con
+__1.- Instalamos el cliente de habmaps con__
 
 Opción 1
 ```
@@ -22,7 +22,7 @@ cd habmapsgateway/habmapslib
 sudo python3 setup.py install
 ```
 
-2.- Envíamos información a la plataforma
+__2.- Envíamos información a la plataforma__
 
 ```python
 from habmapslib import MapTracker, HabMapsMessage

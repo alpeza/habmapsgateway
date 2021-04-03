@@ -75,7 +75,7 @@ class HabMapsMessage(object):
     def setTimeStamp(self, ts):
         try:
             datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
-            self._tracets = ts
+            self._track['ftime'] = ts
         except ValueError:
             logging.error("Invalid date format")
             raise ValueError("Incorrect data format, should be YYYY-mm-dd H:M:S")
