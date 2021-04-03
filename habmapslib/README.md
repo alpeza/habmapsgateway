@@ -10,13 +10,21 @@ Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 __1.- Instalamos el cliente de habmaps con__
 
 Opción 1
-```
+
+```bash
 pip3 install habmapslib
 ```
 
+> Para raspberry pi puede que falle la instalación de la dependencia pyyamal
+> la habremos de instalar manualmente con
+> ``
+> sudo pip3 install --no-cache-dir --no-binary PyYAML PyYAML
+> ```
+> Para el upgrade de version: `pip3 install --upgrade habmapslib`
+
 Opción 2, instalación manual
 
-```
+```bash
 git clone https://github.com/alpeza/habmapsgateway.git
 cd habmapsgateway/habmapslib
 sudo python3 setup.py install
@@ -78,9 +86,9 @@ export HABLIB_LOGFILE="/tmp/hablibclient.log"
         print(rc['reason'])
 ```
 
-## CLI File Parser
+## CLI FileParser
 
-La librería también se puede emplear a modo de _deamon_ que va leyendo
+La librería también se puede emplear a modo de _daemon_ que va leyendo
 de un fichero y transmitiéndolo a habmaps.
 
 ```bash

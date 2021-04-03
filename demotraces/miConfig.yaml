@@ -1,9 +1,7 @@
-
 basestation:
   id: "id-de-mi-estacion"
   appenders:
-    - name: "gps"
-      filepath: "/fichero/con/tramas/gps.txt"
+    gpsappender: "/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender"
 mqtt:
   url: "localhost"
   topic: "hablistener"
