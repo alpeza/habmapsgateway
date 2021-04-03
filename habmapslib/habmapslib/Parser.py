@@ -20,9 +20,9 @@ class Parser(object):
                                         mqtt_url=self.ch['mqtt']['url'],
                                         mqtt_port=int(self.ch['mqtt']['port']),
                                         user=self.ch['mqtt']['user'],
-                                        password=self.ch['mqtt']['password'],
                                         publish=self.ch['mqtt']['topic'],
-                                        alive=int(self.ch['mqtt']['60'])
+                                        alive=int(self.ch['mqtt']['alive']),
+                                        password=self.ch['mqtt']['password']
                                         )
         #self.mt.startAlive()
 
