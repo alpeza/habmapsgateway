@@ -23,7 +23,7 @@ class Parser(object):
                                         password=self.ch['mqtt']['password'],
                                         publish=self.ch['mqtt']['topic'],
                                         alive=int(self.ch['mqtt']['60']))
-        self.mt.startAlive()
+        #self.mt.startAlive()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""
