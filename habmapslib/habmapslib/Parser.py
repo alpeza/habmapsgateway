@@ -16,6 +16,14 @@ class Parser(object):
     def __init__(self, confHandler):
         super(Parser, self).__init__()
         self.ch = confHandler.getConfig()
+        self.mt = MapTracker.MapTracker(id=self.ch['basestation']['id'],
+                                        mqtt_url=self.ch['mqtt']['url'],
+                                        mqtt_port=self.ch['mqtt']['port'],
+                                        user=self.ch['mqtt']['user'],
+                                        password=self.ch['mqtt']['password'],
+                                        publish=self.ch['mqtt']['topic'],
+                                        alive=int(self.ch['mqtt']['60']))
+        self.mt.startAlive()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""
@@ -38,7 +46,6 @@ class Parser(object):
                     hm.setTimeStamp(date_composed)
                 elif el == '$pos':
                     pos = trace[i].split(',')
-                    print(pos)
                     hm.setHabPosition([pos[0], pos[1]])
                 elif el == '$id':
                     hm.setHabId(trace[i])
@@ -58,7 +65,8 @@ class Parser(object):
         logging.debug(txt)
         # 1.- Parseamos la traza que nos llega de lora
         try:
-            self.parseline(txt, self.ch['frame']['format'])
+            hm = self.parseline(txt, self.ch['frame']['format'])
+            self.mt.sendHabMessage(hm)
         except Exception as e:
             logging.error("Something went wrong ...")
             logging.error(e)
