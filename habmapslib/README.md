@@ -87,8 +87,16 @@ de un fichero y transmitiéndolo a habmaps.
 python3 -m habmapslib.cli --help
 ```
 
-1.- Configuramos el programa:
+1.- Configuramos el programa, para ello podemos emplear el ejemplo que nos da `--genconffile`:
 
 ```bash
-python3 -m habmapslib.cli --genconffile
+python3 -m habmapslib.cli --genconffile > miConfig.yaml
+# Rellenamos el formulario
+nano miConfig.yaml
+```
+
+2.- Una vez configurado lanzamos el programa con:
+
+```bash
+python3 -m habmapslib.cli --conffile miConfig.yaml
 ```
