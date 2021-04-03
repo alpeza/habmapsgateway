@@ -38,6 +38,7 @@ class Parser(object):
                     hm.setTimeStamp(date_composed)
                 elif el == '$pos':
                     pos = trace[i].split(',')
+                    print(pos)
                     hm.setHabPosition([pos[0], pos[1]])
                 elif el == '$id':
                     hm.setHabId(trace[i])
@@ -56,7 +57,12 @@ class Parser(object):
         logging.debug(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  --> Nueva linea:")
         logging.debug(txt)
         # 1.- Parseamos la traza que nos llega de lora
-        self.parseline(txt, self.ch['frame']['format'])
+        try:
+            self.parseline(txt, self.ch['frame']['format'])
+        except Exception as e:
+            logging.error("Something went wrong ...")
+            logging.error(e)
+
 
     def run(self):
         """ Función que lanza el parser """
