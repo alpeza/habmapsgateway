@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="habmapslib",
     include_package_data=True,
-    version="1.0.10",
+    version="1.0.11",
     author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
@@ -25,12 +25,12 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9'
+        'Programming Language :: Python :: 3.8'
     ],
-    python_requires='>=3.6, <4',
+    python_requires='>=3.5, <4',
     project_urls={  # Optional
         'Bug Reports': 'https://github.com/alpeza/habmapsgateway/issues',
         'Funding': 'https://github.com/alpeza/habmapsgateway/issues',
