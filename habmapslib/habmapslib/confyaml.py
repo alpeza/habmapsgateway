@@ -1,3 +1,4 @@
+conf='''
 basestation:
   id: id-de-mi-estacion
   appenders:
@@ -15,8 +16,9 @@ frame:
   # $time : Es la hora expresada en HHMMSS
   # $pos : Es la posición gps del hab expresada en lat,lon
   # $id  : Es el identificador del hab
-  format: '$time|AlturaGPS|$pos|VelocidadHorizontalGPS|Temperatura|Presion|AlturaBarometrica|$id'
+  format: "$time|AlturaGPS|$pos|VelocidadHorizontalGPS|Temperatura|Presion|AlturaBarometrica|$id"
   # Fichero donde se van insertando las trazas de LoRa
   file: logs_de_lora.log
   # Cada cuantos segundos se mira el fichero de envio
   refresh: 1
+'''

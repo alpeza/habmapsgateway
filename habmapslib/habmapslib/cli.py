@@ -1,18 +1,13 @@
 import click
 import sys
-
-
-def showConfFile():
-    print('Se va a abrir')
-    with open('conf.yaml', 'r') as f:
-        print(f)
+from . import confyaml
 
 @click.command()
 @click.option('--conffile', help='Fichero de configuración')
 @click.option('--genconffile', is_flag=True, help='Muestra un fichero de configuración de ejemplo')
 def cline(conffile, genconffile):
     if genconffile:
-        showConfFile()
+        print(confyaml.conf)
 
 if __name__ == '__main__':
     cline()
