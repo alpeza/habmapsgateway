@@ -3,6 +3,7 @@ import sys
 
 
 def showConfFile():
+    print('Se va a abrir')
     with open('conf.yaml', 'r') as f:
         print(f)
 
