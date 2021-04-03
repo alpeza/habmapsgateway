@@ -47,7 +47,7 @@ class Parser(object):
                     hm.setTimeStamp(date_composed)
                 elif el == '$pos':
                     pos = trace[i].split(',')
-                    hm.setHabPosition([pos[0], pos[1]])
+                    hm.setHabPosition([float(pos[0]), float(pos[1])])
                 elif el == '$id':
                     hm.setHabId(trace[i])
                 # Parseo de señales
