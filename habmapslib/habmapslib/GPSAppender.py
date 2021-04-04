@@ -24,6 +24,7 @@ class GPSAppender(Appender.Appender):
             return retval
         try:
             #1.- Obtenemos la ultima linea
+            logging.debug("GPS Appender is trying to read the file: " + str(self.path) )
             values = self.getLastLine(self.path)
             logging.debug("Last GPS Appender line readed : " + values)
             #2.- Parseamos la linea
