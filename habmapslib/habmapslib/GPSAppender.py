@@ -35,10 +35,12 @@ class GPSAppender(Appender.Appender):
                 'lon': float(ret['lon']),
                 'height': float(ret['height']),
             }
+            return retval
         except Exception as e:
             logging.error("Something went wrong parsing the GPS frame ...")
             logging.error(e)
             logging.error(traceback.format_exc())
+            return retval
 
     def getValueAsArray(self):
         val = self.readValue()
