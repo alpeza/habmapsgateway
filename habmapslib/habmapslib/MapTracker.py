@@ -36,7 +36,9 @@ class MapTracker(object):
         msg = {
             "type": "health",
             "ftime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "id": self.id
+            "basestation":{
+                "id": self.id
+            }
         }
         logging.debug(msg)
         self.sendMessage(msg);
