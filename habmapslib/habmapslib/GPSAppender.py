@@ -1,5 +1,5 @@
 from . import Appender
-import os,logging
+import os,logging,traceback
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get('HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
@@ -9,27 +9,36 @@ class GPSAppender(Appender.Appender):
     """docstring for GPSAppender."""
     def __init__(self, chandler):
         super(GPSAppender, self).__init__()
-        self.path = chandler['basestation']['appenders']['gpsappender']
+        self.path = chandler['basestation']['appenders']['gpsappender']['file']
+        self.regex = chandler['basestation']['appenders']['gpsappender']['regexselect']
+        self.mapping = chandler['basestation']['appenders']['gpsappender']['mapping']
 
     def readValue(self):
+        retval = {
+            'lat': 0.0,
+            'lon': 0.0,
+            'height': 0.0
+        }
         if self.path == '':
-            return {
-                'lat': 0.0,
-                'lon': 0.0,
-                'height': 0.0
-            }
+            logging.debug(" GPS Appender is not configured ...")
+            return retval
         try:
+            #1.- Obtenemos la ultima linea
             values = self.getLastLine(self.path)
-            logging.debug("Readed gps base statio pos: " )
-            logging.debug(values)
-            splt = values.split(",")
-            return {
-                'lat': splt[0],
-                'lon': splt[1],
-                'height': splt[2]
+            logging.debug("Last GPS Appender line readed : " + values)
+            #2.- Parseamos la linea
+            ret=self.mapRegex(self, self.regex,values, self.mapping)
+            logging.debug(" Parsed frame: ")
+            logging.debug(ret)
+            retval = {
+                'lat': float(ret['lat']),
+                'lon': float(ret['lon']),
+                'height': float(ret['height']),
             }
         except Exception as e:
-            raise e
+            logging.error("Something went wrong parsing the GPS frame ...")
+            logging.error(e)
+            logging.error(traceback.format_exc())
 
     def getValueAsArray(self):
         val = self.readValue()

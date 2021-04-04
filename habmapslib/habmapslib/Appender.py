@@ -1,3 +1,4 @@
+import re
 class Appender(object):
     """Base para los appenders"""
     def __init__(self):
@@ -9,4 +10,15 @@ class Appender(object):
             last_line = lines[-1]
             return last_line
 
+    def mapRegex(self, regex,text,maparray):
+        datas = re.search(regex, text, re.IGNORECASE)
+        i=1
+        out={}
+        if datas:
+            for el in maparray:
+                out[el] = datas.group(i)
+                i += 1
+            return {"isOK": True, "out": out}
+        else:
+            return {"isOK": False, "out": out}
 
