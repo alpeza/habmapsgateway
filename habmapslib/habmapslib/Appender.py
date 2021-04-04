@@ -5,6 +5,8 @@ class Appender(object):
         super(Appender, self).__init__()
 
     def getLastLine(self,path):
+        print("*********************")
+        print(path)
         with open(path, 'r') as f:
             lines = [line for line in f.read().split('\n') if line.strip() != '']
             last_line = lines[-1]
