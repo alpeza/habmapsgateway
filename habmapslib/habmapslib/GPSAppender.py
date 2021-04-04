@@ -9,7 +9,7 @@ class GPSAppender(Appender.Appender):
     """docstring for GPSAppender."""
     def __init__(self, chandler):
         super(GPSAppender, self).__init__()
-        self.path = chandler['basestation']['appenders']['gpsappender']['file']
+        self.file = chandler['basestation']['appenders']['gpsappender']['file']
         self.regex = chandler['basestation']['appenders']['gpsappender']['regexselect']
         self.mapping = chandler['basestation']['appenders']['gpsappender']['mapping']
 
@@ -19,13 +19,14 @@ class GPSAppender(Appender.Appender):
             'lon': 0.0,
             'height': 0.0
         }
-        if self.path == '':
+        if self.file == '':
             logging.debug(" GPS Appender is not configured ...")
             return retval
         try:
             #1.- Obtenemos la ultima linea
             logging.debug("GPS Appender is trying to read the file: " + str(self.path) )
-            values = self.getLastLine(self.path)
+            print(self.file)
+            values = self.getLastLine(self.file)
             logging.debug("Last GPS Appender line readed : " + values)
             #2.- Parseamos la linea
             ret=self.mapRegex(self, self.regex,values, self.mapping)
