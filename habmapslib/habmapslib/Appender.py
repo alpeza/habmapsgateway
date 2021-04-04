@@ -4,6 +4,9 @@ class Appender(object):
     def __init__(self):
         super(Appender, self).__init__()
 
+
+
+
     def getLastLine(self,path):
         print("**********************")
         print(path)
