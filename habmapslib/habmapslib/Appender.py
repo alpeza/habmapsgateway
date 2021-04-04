@@ -4,19 +4,13 @@ class Appender(object):
     def __init__(self):
         super(Appender, self).__init__()
 
-
-
-
     def getLastLine(self,path):
-        print("**********************")
-        print(path)
-        print("**********************")
         with open(path, 'r') as f:
             lines = [line for line in f.read().split('\n') if line.strip() != '']
             last_line = lines[-1]
             return last_line
 
-    def mapRegex(self, regex,text,maparray):
+    def mapRegex(self,regex,text,maparray):
         datas = re.search(regex, text, re.IGNORECASE)
         i=1
         out={}

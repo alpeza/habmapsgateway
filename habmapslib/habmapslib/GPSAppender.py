@@ -25,11 +25,10 @@ class GPSAppender(Appender.Appender):
         try:
             #1.- Obtenemos la ultima linea
             logging.debug("GPS Appender is trying to read the file: " + str(self.file) )
-            print(self.file)
             values = self.getLastLine(self.file)
             logging.debug("Last GPS Appender line readed : " + values)
             #2.- Parseamos la linea
-            ret=self.mapRegex(self, self.regex,values, self.mapping)
+            ret=self.mapRegex(self.regex,values, self.mapping)
             logging.debug(" Parsed frame: ")
             logging.debug(ret)
             if ret['isOK']:
