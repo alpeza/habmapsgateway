@@ -110,7 +110,13 @@ La configuración se define a través de un fichero YAML.
 basestation:
   id: "id-de-mi-estacion"
   appenders:
-    gpsappender: "/Users/tests/ArchLab/habmapsgateway/demotraces/gps.appender"
+    gpsappender:
+      file: '/Users/tests/ArchLab/habmapsgateway/demotraces/gps.appender'
+      regexselect: '\[.*\]\|(.*)\|(.*),(.*)\|.*\|'
+      mapping:
+        - "height"
+        - "lat"
+        - "lon"
 mqtt:
   url: "localhost"
   topic: "hablistener"
@@ -134,27 +140,39 @@ Nos resultarán de mayor interés las siguientes secciones:
 
 #### Appender GPS
 
-Se trata de un fichero donde el programa espera encontrar la posición gps de la 
+Se trata de un fichero donde el programa espera encontrar la posición GPS de la 
 antena.
 
 ```yaml
   ...
   appenders:
-    gpsappender: "/Users/tests/ArchLab/habmapsgateway/demotraces/gps.appender"
+    gpsappender:
+      file: '/Users/tests/ArchLab/habmapsgateway/demotraces/gps.appender'
+      regexselect: '\[.*\]\|(.*)\|(.*),(.*)\|.*\|'
+      mapping:
+        - "height"
+        - "lat"
+        - "lon"
 ```
 
 En caso de no disponer de un módulo gps. Se puede dejar a blancos:
 
 ```yaml
   ...
-  appenders:
-    gpsappender: ""
+  gpsappender:
+    file: ''
 ```
 
-En caso de querer hacer uso del appender es necesario informar en el 
-fichero especificado la posición gps en el siguiente formato `<latitud>,<longitud>,<altura>`,
-por ejemplo `29.1,12.3,100`. El appender siempre leerá la última línea y esperará que esta cumpla
-con el formato especificado.
+El GPS appender funciona del siguiente modo:
+
+- 1.- Filtra la última línea del fichero indicado en el campo `gpsappender.file`.
+- 2.- Sobre esta última línea aplicará el filtro que se le haya indicado mediante la expresión
+regular definida en `gpsappender.regexselect`.
+- 3.- Los __grupos__ que salgan de esta expresión regular los mapeará según defina el orden de la lista `mapping.mapping`.
+  En este caso el grupo 1 se corresponderá con el campo `height` mientras que el grupo 3 con `lon`.
+
+> Podemos validar la expresión regular en [regex101](https://regex101.com/). La expresión regular
+> del ejemplo se corresponde con la trama `[2021-03-28 18:49:02][INFO]|1129|42.3074,2.2111|0.1187|`
 
 
 #### Trama de la sonda

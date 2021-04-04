@@ -2,12 +2,12 @@ conf='''basestation:
   id: "id-de-mi-estacion"
   appenders:
     gpsappender:
-      file: "/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender"
-      regexselect: "\[.*\]\|(.*)\|(.*),(.*)\|.*\|"
+      file: '/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender'
+      regexselect: '\[.*\]\|(.*)\|(.*),(.*)\|.*\|'
       mapping:
-        - height
-        - lat
-        - lon
+        - "height"
+        - "lat"
+        - "lon"
 mqtt:
   url: "localhost"
   topic: "hablistener"
