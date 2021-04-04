@@ -30,11 +30,12 @@ class GPSAppender(Appender.Appender):
             ret=self.mapRegex(self, self.regex,values, self.mapping)
             logging.debug(" Parsed frame: ")
             logging.debug(ret)
-            retval = {
-                'lat': float(ret['lat']),
-                'lon': float(ret['lon']),
-                'height': float(ret['height']),
-            }
+            if ret['isOK']:
+                retval = {
+                    'lat': float(ret['out']['lat']),
+                    'lon': float(ret['out']['lon']),
+                    'height': float(ret['out']['height']),
+                }
             return retval
         except Exception as e:
             logging.error("Something went wrong parsing the GPS frame ...")
