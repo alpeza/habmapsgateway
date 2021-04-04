@@ -173,7 +173,9 @@ El GPS appender funciona del siguiente modo:
 
 > Podemos validar la expresión regular en [regex101](https://regex101.com/). La expresión regular
 > del ejemplo se corresponde con la trama `[2021-03-28 18:49:02][INFO]|1129|42.3074,2.2111|0.1187|`
-
+>
+> Podemos emplear otras expresiones regulares, por ejemplo, esta esperaría encontrar `(.*),(.*),(.*)`
+> la información del siguiente modo `1129,42.3074,2.2111`, `<altura>,<latitud>,<longitud>`
 
 #### Trama de la sonda
 

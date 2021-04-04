@@ -65,19 +65,19 @@ export HABLIB_LOGFILE="/tmp/hablibclient.log"
 
 ```python
     rc = mt.sendHabMessage(HabMapsMessage.HabMapsMessage(
-        TimeStamp='2021-04-02 15:33:43',
-        HabId='Mi-Hab',
-        HabPosition=[5, 3],
-        Signals={
-            "miSensorUno": 122.4,
-            "miSensorDos": 400.5
-        },
-        BasestationPosition=[5, 3]))
-    if rc['isOK']:
-        print("El mensaje se ha enviado correctamente ... ")
-    else:
-        print("Ha existido algun error en la transmision ...")
-        print(rc['reason'])
+    TimeStamp='2021-04-02 15:33:43',
+    HabId='Mi-Hab',
+    HabPosition=[5, 3],
+    Signals={
+        "miSensorUno": 122.4,
+        "miSensorDos": 400.5
+    },
+    BasestationPosition=[5, 3]))
+if rc['isOK']:
+    print("El mensaje se ha enviado correctamente ... ")
+else:
+    print("Ha existido algun error en la transmision ...")
+    print(rc['reason'])
 ```
 
 ## CLI FileParser
@@ -96,7 +96,7 @@ python3 -m habmapslib.cli --genconffile > miConfig.yaml
 #Editamos la configuración
 nano miConfig.yaml
 ```
-2.- Lanzamos el programa 
+2.- Lanzamos el programa
 
 ```bash
 python3 -m habmapslib.cli --conffile miConfig.yaml
@@ -140,7 +140,7 @@ Nos resultarán de mayor interés las siguientes secciones:
 
 #### Appender GPS
 
-Se trata de un fichero donde el programa espera encontrar la posición GPS de la 
+Se trata de un fichero donde el programa espera encontrar la posición GPS de la
 antena.
 
 ```yaml
@@ -167,7 +167,7 @@ El GPS appender funciona del siguiente modo:
 
 - 1.- Filtra la última línea del fichero indicado en el campo `gpsappender.file`.
 - 2.- Sobre esta última línea aplicará el filtro que se le haya indicado mediante la expresión
-regular definida en `gpsappender.regexselect`.
+  regular definida en `gpsappender.regexselect`.
 - 3.- Los __grupos__ que salgan de esta expresión regular los mapeará según defina el orden de la lista `mapping.mapping`.
   En este caso el grupo 1 se corresponderá con el campo `height` mientras que el grupo 3 con `lon`.
 
