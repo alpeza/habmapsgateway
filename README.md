@@ -155,12 +155,18 @@ antena.
         - "lon"
 ```
 
-En caso de no disponer de un módulo gps. Se puede dejar a blancos:
+En caso de no disponer de un módulo gps. Se puede dejar a blancos el campo `gpsappender.file`:
 
 ```yaml
   ...
   gpsappender:
     file: ''
+    regexselect: '\[.*\]\|(.*)\|(.*),(.*)\|.*\|'
+    mapping:
+      - "height"
+      - "lat"
+      - "lon"
+
 ```
 
 El GPS appender funciona del siguiente modo:
@@ -168,7 +174,7 @@ El GPS appender funciona del siguiente modo:
 - 1.- Filtra la última línea del fichero indicado en el campo `gpsappender.file`.
 - 2.- Sobre esta última línea aplicará el filtro que se le haya indicado mediante la expresión
   regular definida en `gpsappender.regexselect`.
-- 3.- Los __grupos__ que salgan de esta expresión regular los mapeará según defina el orden de la lista `mapping.mapping`.
+- 3.- Los __grupos__ que salgan de esta expresión regular los mapeará según defina el orden de la lista `gpsappender.mapping`.
   En este caso el grupo 1 se corresponderá con el campo `height` mientras que el grupo 3 con `lon`.
 
 > Podemos validar la expresión regular en [regex101](https://regex101.com/). La expresión regular
