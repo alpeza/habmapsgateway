@@ -1,4 +1,4 @@
 name="habmapslib/habmapslib"
-__version__ = "1.0.12"
+__version__ = "1.0.14"
 from . import MapTracker
 from . import HabMapsMessage
