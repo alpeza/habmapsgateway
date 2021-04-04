@@ -89,7 +89,7 @@ class HabMapsMessage(object):
         self._track['basestation']['pos']['lat'] = float(bspos[0])
         self._track['basestation']['pos']['lon'] = float(bspos[1])
         if len(bspos) == 3 and float(bspos[2]) != 0.0:
-            self.addSignal('BStationHeight',float(bspos[1]))
+            self.addSignal('BStationHeight',float(bspos[2]))
 
     def addSignal(self,key,value):
         self._track['hab']['payload'][key] = value
