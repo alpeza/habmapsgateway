@@ -20,7 +20,7 @@ def checkIfFileExists(file,autoCreate=False):
         logging.error("==> Please create the file: " + file)
         logging.error(e)
         if autoCreate:
-            logging.info("Autocreate is enabled, creating the file ...")
+            logging.info("Autocreate is enabled, creating the file ..." + file)
             createFile(file)
         return False
 
@@ -40,7 +40,7 @@ def checkConfigs(ch):
         #Chequeamos si todo esta correcto
         if False in okarr:
             logging.error("Please check that all files exist ...")
-            time.sleep(3)
+            time.sleep(5)
         else:
             logging.info("Checks are ok, starting de program ...")
             isOK = True

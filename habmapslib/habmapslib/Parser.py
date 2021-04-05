@@ -63,7 +63,7 @@ class Parser(object):
 
     def _print_line(self, txt):
         """ Call back, funcion que se llama por cada linea que se lee"""
-        logging.debug(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  --> Nueva linea:")
+        logging.debug(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  --> New line in file:")
         logging.debug(txt)
         # 1.- Parseamos la traza que nos llega de lora
         try:
@@ -73,6 +73,7 @@ class Parser(object):
                 pos_gps = self.gps_appender.getValueAsArray()
                 hm.setBasestationPosition(pos_gps)
                 # 3.- Transmitimos el mensaje
+                logging.info("Sending message to MQTT")
                 self.mt.sendHabMessage(hm)
         except Exception as e:
             logging.error("Something went wrong ...")
