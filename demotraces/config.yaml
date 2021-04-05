@@ -2,7 +2,7 @@ basestation:
   id: "id-de-mi-estacion"
   appenders:
     gpsappender:
-      file: '/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender'
+      file: '/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appenderx'
       regexselect: '\[.*\]\|(.*)\|(.*),(.*)\|.*\|'
       mapping:
         - "height"
