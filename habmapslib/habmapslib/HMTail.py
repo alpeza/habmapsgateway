@@ -15,17 +15,11 @@ class Tail(object):
         self.tailed_file = tailed_file
         self.callback = sys.stdout.write
 
-    def checkIfFileExists(file,autoCreate=False):
-        isOK = False
+    def checkIfFileExists(self,mfile):
         try:
-            with open(file) as f:
+            with open(mfile) as f:
                 return True
         except IOError as e:
-            logging.error("==> Please create the file: " + file)
-            logging.error(e)
-            if autoCreate:
-                logging.info("Autocreate is enabled, creating the file ..." + file)
-                createFile(file)
             return False
 
     def follow(self, s=1):
