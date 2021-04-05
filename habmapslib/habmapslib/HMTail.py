@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-
 class Tail(object):
     ''' Represents a tail command. '''
     def __init__(self, tailed_file):
@@ -34,7 +33,10 @@ class Tail(object):
             file_.seek(0,2)
             while True:
                 if not self.checkIfFileExists(self.tailed_file):
-                    self.follow(self.tailed_file)
+                    try:
+                        self.follow(self.tailed_file)
+                    except Exception as e:
+                        print("The file does not exists")
 
                 curr_position = file_.tell()
                 line = file_.readline()
