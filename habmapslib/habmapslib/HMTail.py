@@ -14,8 +14,6 @@ class Tail(object):
         self.tailed_file = tailed_file
         self.callback = sys.stdout.write
 
-
-
     def follow(self, s=1):
         ''' Do a tail follow. If a callback function is registered it is called with every new line. 
         Else printed to standard out.
