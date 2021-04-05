@@ -14,12 +14,7 @@ class Tail(object):
         self.tailed_file = tailed_file
         self.callback = sys.stdout.write
 
-    def checkIfFileExists(self,mfile):
-        try:
-            with open(mfile) as f:
-                return True
-        except IOError as e:
-            return False
+
 
     def follow(self, s=1):
         ''' Do a tail follow. If a callback function is registered it is called with every new line. 
@@ -32,12 +27,6 @@ class Tail(object):
             # Go to the end of file
             file_.seek(0,2)
             while True:
-                if not self.checkIfFileExists(self.tailed_file):
-                    try:
-                        self.follow()
-                    except Exception as e:
-                        print("-> The LoRa file does not exists: " + self.tailed_file)
-
                 curr_position = file_.tell()
                 line = file_.readline()
                 if not line:
