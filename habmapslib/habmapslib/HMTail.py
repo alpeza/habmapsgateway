@@ -15,6 +15,19 @@ class Tail(object):
         self.tailed_file = tailed_file
         self.callback = sys.stdout.write
 
+    def checkIfFileExists(file,autoCreate=False):
+        isOK = False
+        try:
+            with open(file) as f:
+                return True
+        except IOError as e:
+            logging.error("==> Please create the file: " + file)
+            logging.error(e)
+            if autoCreate:
+                logging.info("Autocreate is enabled, creating the file ..." + file)
+                createFile(file)
+            return False
+
     def follow(self, s=1):
         ''' Do a tail follow. If a callback function is registered it is called with every new line. 
         Else printed to standard out.
@@ -26,6 +39,9 @@ class Tail(object):
             # Go to the end of file
             file_.seek(0,2)
             while True:
+                if not self.checkIfFileExists(self.tailed_file):
+                    raise TailError("File '%s' does not exist" % (file_))
+
                 curr_position = file_.tell()
                 line = file_.readline()
                 if not line:
