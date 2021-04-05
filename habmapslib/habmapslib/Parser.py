@@ -70,11 +70,9 @@ class Parser(object):
             hm = self.parseline(txt, self.ch['frame']['format'])
             if hm:
                 # 2.- Obtenemos la ultima traza de gps
-                logging.info("Trying to get gps appender data")
                 pos_gps = self.gps_appender.getValueAsArray()
                 hm.setBasestationPosition(pos_gps)
                 # 3.- Transmitimos el mensaje
-                logging.info("Sending message to MQTT")
                 self.mt.sendHabMessage(hm)
         except Exception as e:
             logging.error("Something went wrong ...")
