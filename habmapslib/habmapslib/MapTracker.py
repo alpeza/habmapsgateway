@@ -63,7 +63,8 @@ class MapTracker(object):
             self.client.disconnect();
             return {"isOK": True, "reason": ""}
         except Exception as e:
-            logging.error(traceback.print_exc())
+            logging.error(e)
+            logging.error(traceback.format_exc())
             return {"isOK": False, "reason": str(e)}
 
     def sendHabMessage(self,hm):

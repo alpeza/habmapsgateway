@@ -57,7 +57,7 @@ La configuración de los logs se realiza a través de variables de entorno
 
 ```bash
 export HABLIB_LOGLEVEL=DEBUG #INFO,ERROR
-export HABLIB_FORMAT="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+export HABLIB_FORMAT="[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s"
 export HABLIB_LOGFILE="/tmp/hablibclient.log"
 ```
 
