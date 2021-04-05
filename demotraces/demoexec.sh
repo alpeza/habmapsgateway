@@ -3,16 +3,11 @@ export HABLIB_FORMAT="[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(lev
 export HABLIB_FORMAT="%(levelname)s - %(message)s" # <-- Para local, con menos verbose
 export HABLIB_LOGFILE="/tmp/hablibclient.log"
 
-PID=99999
 trap ctrl_c INT
 function ctrl_c() {
-  set -x
-  kill -9 $PID
-  exit 1
-  set +x
+  echo "Manual exited PID: "$$
+  exit 0
 }
-
 while [ true ]; do
     python3 -m habmapslib.cli --conffile config.yaml
-    PID=$($!)
 done

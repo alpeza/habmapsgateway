@@ -208,3 +208,49 @@ Un ejemplo de trama de sonda para este formato es el siguiente:
 ```
 185359|1127|4.3074,2.2111|0.1717|22.64|900.5943|983|HABCAT2|
 ```
+
+### Ejecución del del CLI FileParser
+
+CLI FileParser controla y actúa del siguiente modo frente a los errores.
+
+#### Errores de ficheros
+
+1.- Si __no existen los ficheros especificados__ en la configuración en el arranque
+    el programa se esperará hasta que existan. Si se ha especificado un fichero de 
+    parseo gps pero este no existe _CLI File Parser_ creará uno en blanco
+    y continuará seteando la posición GPS del gateway a 0. 
+
+2.- Si durante la ejecución se borrase el fichero de trazas especificado en 
+   `frame.file` _CLI File Parser_ lanzaría una excepción y el programa fallaría
+    por lo que si queremos que se relance automáticamente y se quede esperando
+    hasta que exista el fichero debemos de lanzar el programa mediante un _script_
+    similar al siguiente:
+
+```bash
+export HABLIB_LOGLEVEL=INFO #INFO,ERROR
+export HABLIB_FORMAT="[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s"
+export HABLIB_FORMAT="%(levelname)s - %(message)s" # <-- Para local, con menos verbose
+export HABLIB_LOGFILE="/tmp/hablibclient.log"
+
+# Trap para salir del bucle mediante cntrl+c en local.
+trap ctrl_c INT
+function ctrl_c() {
+  echo "Manual exited PID: "$$
+  exit 0
+}
+
+while [ true ]; do
+    python3 -m habmapslib.cli --conffile config.yaml
+done
+```
+
+3.- Si no es capaz de parsear el fichero de trazas GPS notificará el error
+y seteará la posición del gateway a `lat:0, lon:0` continuando con la transmisión
+de trazas.
+
+#### Errores de conexión.
+
+Si el cliente _mqtt_ no es capaz de establecer la conexión con el servidor
+el mensaje __se descartará__ y volverá a intentarlo con la siguiente 
+traza que le llegue.
+
