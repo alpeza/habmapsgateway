@@ -34,7 +34,7 @@ class Tail(object):
             file_.seek(0,2)
             while True:
                 if not self.checkIfFileExists(self.tailed_file):
-                    raise TailError("File '%s' does not exist" % (file_))
+                    self.follow(self.tailed_file)
 
                 curr_position = file_.tell()
                 line = file_.readline()
