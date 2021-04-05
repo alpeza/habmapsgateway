@@ -34,9 +34,9 @@ class Tail(object):
             while True:
                 if not self.checkIfFileExists(self.tailed_file):
                     try:
-                        self.follow(self.tailed_file)
+                        self.follow()
                     except Exception as e:
-                        print("The file does not exists")
+                        print("-> The LoRa file does not exists: " + self.tailed_file)
 
                 curr_position = file_.tell()
                 line = file_.readline()
