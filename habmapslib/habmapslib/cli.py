@@ -21,7 +21,7 @@ def cline(conffile, genconffile):
         ch = ConfHandler.ConfHandler(file=conffile)
         logging.info("Launching habmapslib parser with the next configuration:")
         logging.info(ch.getConfig())
-        InitChecks.checkConfigs(ch)
+        InitChecks.checkConfigs(ch.getConfig())
         p = Parser.Parser(ch)
         p.run()
 
