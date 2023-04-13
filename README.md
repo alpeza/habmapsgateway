@@ -1,4 +1,4 @@
-# habmapslib TO THE MOON
+# habmapslib
 
 Librería para el uso de [habmaps](https://github.com/alpeza/habmaps)
 
