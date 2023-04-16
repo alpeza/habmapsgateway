@@ -1,14 +1,18 @@
-import logging, os
+import traceback
+import logging
+import os
 from datetime import datetime
 from . import HMTail
 from . import HabMapsMessage
 from . import MapTracker
 from . import GPSAppender
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
-FORMATTER = os.environ.get('HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+FORMATTER = os.environ.get(
+    'HABLIB_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
-logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE), logging.StreamHandler()])
-import traceback
+logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[
+                    logging.FileHandler(LOGFILE), logging.StreamHandler()])
+
 
 class Parser(object):
     """docstring for Parser."""
@@ -16,7 +20,7 @@ class Parser(object):
     def __init__(self, confHandler):
         super(Parser, self).__init__()
         self.ch = confHandler.getConfig()
-        self.mt = MapTracker.MapTracker(id=self.ch['basestation']['id'],
+        self.mt = MapTracker.MapTracker(bid=self.ch['basestation']['bid'],
                                         mqtt_url=self.ch['mqtt']['url'],
                                         mqtt_port=int(self.ch['mqtt']['port']),
                                         user=self.ch['mqtt']['user'],
@@ -25,7 +29,7 @@ class Parser(object):
                                         password=self.ch['mqtt']['password']
                                         )
         self.gps_appender = GPSAppender.GPSAppender(self.ch)
-        #self.mt.startAlive()
+        # self.mt.startAlive()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""
@@ -35,7 +39,8 @@ class Parser(object):
         hm = HabMapsMessage.HabMapsMessage()
 
         if len(trace) != len(definitions):
-            logging.error("Invalid frame: " + str(len(trace)) + " != " + str(len(definitions)))
+            logging.error("Invalid frame: " + str(len(trace)) +
+                          " != " + str(len(definitions)))
             logging.error(line)
             return None
 
@@ -43,13 +48,13 @@ class Parser(object):
             if el != '':
                 if el == '$time':
                     date_composed = datetime.now().strftime("%Y-%m-%d") + " " + trace[i][0:2] + ":" + trace[i][
-                                                                                                      2:4] + ":" + \
-                                    trace[i][4:6]
+                        2:4] + ":" + \
+                        trace[i][4:6]
                     hm.setTimeStamp(date_composed)
                 elif el == '$pos':
                     pos = trace[i].split(',')
                     hm.setHabPosition([float(pos[0]), float(pos[1])])
-                elif el == '$id':
+                elif el == '$hid':
                     hm.setHabId(trace[i])
                 # Parseo de señales
                 else:
@@ -63,7 +68,8 @@ class Parser(object):
 
     def _print_line(self, txt):
         """ Call back, funcion que se llama por cada linea que se lee"""
-        logging.debug(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  --> New line in file:")
+        logging.debug(datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S") + "  --> New line in file:")
         logging.debug(txt)
         # 1.- Parseamos la traza que nos llega de lora
         try:
@@ -78,7 +84,6 @@ class Parser(object):
             logging.error("Something went wrong ...")
             logging.error(e)
             logging.error(traceback.format_exc())
-
 
     def run(self):
         """ Función que lanza el parser """

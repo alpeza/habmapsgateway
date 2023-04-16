@@ -9,5 +9,5 @@ function ctrl_c() {
   exit 0
 }
 while [ true ]; do
-    python3 -m habmapslib.cli --conffile config.yaml
+    python3.9 -m habmapslib.cli --conffile config.yaml
 done

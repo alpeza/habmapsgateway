@@ -63,13 +63,13 @@ class HabMapsMessage(object):
                 'Please set a valid hab pos with setHabPosition([<float : lat>, <float : lon>])')
             valid = False
 
-        if self._track['hab']['id'] == '':
-            logging.error('Please set a habid with setHabId(<string : id>)')
+        if self._track['hab']['hid'] == '':
+            logging.error('Please set a habid with setHabId(<string : hid>)')
             valid = False
 
-        if self._track['basestation']['id'] == '':
+        if self._track['basestation']['bid'] == '':
             logging.error(
-                'Please set a habid with setBasestationId(<string : id>)')
+                'Please set a habid with setBasestationId(<string : bid>)')
             valid = False
 
         if self._track['ftime'] == '':
@@ -101,7 +101,7 @@ class HabMapsMessage(object):
         self._track['hab']['payload'][key] = value
 
     def setHabId(self, id):
-        self._track['hab']['id'] = id.replace(" ", "-")
+        self._track['hab']['hid'] = id.replace(" ", "-")
 
     def setBasestationId(self, id):
-        self._track['basestation']['id'] = id.replace(" ", "-")
+        self._track['basestation']['bid'] = id.replace(" ", "-")
