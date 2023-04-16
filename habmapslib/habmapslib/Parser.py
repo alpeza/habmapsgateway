@@ -29,7 +29,7 @@ class Parser(object):
                                         password=self.ch['mqtt']['password']
                                         )
         self.gps_appender = GPSAppender.GPSAppender(self.ch)
-        # self.mt.startAlive()
+        self.mt.startAlive()
 
     def parseline(self, line, definition):
         """ Core de parseo, aqui realiza la serialización a json de la traza retornando un HabMapsMessage"""

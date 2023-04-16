@@ -75,6 +75,7 @@ class MapTracker(object):
         self.s.run()
 
     def startAlive(self):
+        logging.info("Iniciando señal de alive")
         threading.Timer(1, self._runAlive).start()
 
     def sendMessage(self, message):
