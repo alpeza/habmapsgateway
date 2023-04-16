@@ -37,8 +37,8 @@ class MapTracker(object):
         self.topic = publish
         self.bid = bid
         self.alive = alive
-        self.gpsAppender = GPSAppender.GPSAppender(chandler=ConfHandler.ConfHandler(
-            file=os.environ.get('CONF_FILE')))
+        self.gpsAppender = GPSAppender.GPSAppender(ConfHandler.ConfHandler(
+            file=os.environ.get('CONF_FILE')).getConfig())
 
         self.s = sched.scheduler(time.time, time.sleep)
 
