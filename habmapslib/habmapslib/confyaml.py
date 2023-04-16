@@ -1,5 +1,5 @@
 conf = '''basestation:
-  id: "id-de-mi-estacion"
+  bid: "id-de-mi-estacion"
   appenders:
     gpsappender:
       file: '/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/gps.appender'
@@ -19,7 +19,7 @@ frame:
   # Definición de la trama donde
   # $time : Es la hora expresada en HHMMSS
   # $pos : Es la posición gps del hab expresada en lat,lon
-  # $id  : Es el identificador del hab
+  # $hid  : Es el identificador del hab
   format: "$time|AlturaGPS|$pos|VelocidadHorizontalGPS|Temperatura|Presion|AlturaBarometrica|$hid|"
   # Fichero donde se van insertando las trazas de LoRa
   file: "/Users/alvaroperis/ArchLab/habmapsgateway/demotraces/out.log"

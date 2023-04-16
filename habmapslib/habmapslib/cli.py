@@ -3,11 +3,14 @@ from . import confyaml
 from . import ConfHandler
 from . import Parser
 from . import InitChecks
-import logging,os
+import logging
+import os
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
-FORMATTER = os.environ.get('HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
+FORMATTER = os.environ.get(
+    'HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
 LOGFILE = os.environ.get('HABLIB_LOGFILE', '/tmp/hablibclient.log')
-logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[logging.FileHandler(LOGFILE),logging.StreamHandler()])
+logging.basicConfig(level=LOGLEVEL, format=FORMATTER, handlers=[
+                    logging.FileHandler(LOGFILE), logging.StreamHandler()])
 
 
 @click.command()
@@ -18,8 +21,10 @@ def cline(conffile, genconffile):
         print(confyaml.conf)
         return 0
     elif conffile:
+        os.environ['CONF_FILE'] = conffile
         ch = ConfHandler.ConfHandler(file=conffile)
-        logging.info("Launching habmapslib parser with the next configuration:")
+        logging.info(
+            "Launching habmapslib parser with the next configuration:")
         logging.info(ch.getConfig())
         InitChecks.checkConfigs(ch.getConfig())
         p = Parser.Parser(ch)

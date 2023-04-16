@@ -7,6 +7,8 @@ import json
 import logging
 import traceback
 from datetime import datetime, timedelta
+from GPSAppender import GPSAppender
+from ConfHandler import ConfHandler
 LOGLEVEL = os.environ.get('HABLIB_LOGLEVEL', 'INFO').upper()
 FORMATTER = os.environ.get(
     'HABLIB_FORMAT', '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s')
@@ -35,16 +37,29 @@ class MapTracker(object):
         self.topic = publish
         self.bid = bid
         self.alive = alive
+        self.gpsAppender = GPSAppender(ConfHandler(
+            file=os.environ.get('CONF_FILE')))
 
         self.s = sched.scheduler(time.time, time.sleep)
 
         self.alive_flag = False
 
     def sendAliveMessage(self):
+        lastGpsLine = [-1, -1, -1]
+        try:
+            lastGpsLine = self.gpsAppender.getValueAsArray()
+        except Exception as e:
+            logging.error(
+                "Error al obtener la posición gps de la traza de status " + str(e))
+
         msg = {
             "type": "health",
             "ftime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "bid": self.bid
+            "bid": self.bid,
+            "pos": {
+                "lat": lastGpsLine[0],
+                "lon": lastGpsLine[1]
+            }
         }
         logging.debug(msg)
         self.sendMessage(msg)
