@@ -76,7 +76,7 @@ class MapTracker(object):
             return {"isOK": False, "reason": str(e)}
 
     def sendHabMessage(self, hm):
-        hm.setBasestationId(self.id)
+        hm.setBasestationId(self.bid)
         if hm.isValidMessage() == False:
             raise ValueError("Please inform all required data")
         return self.sendMessage(hm.getMessage())
