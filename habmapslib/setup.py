@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="habmapslib",
     include_package_data=True,
-    version="2.0.0",
+    version="2.0.1",
     author="Alpeza",
     author_email="",
     description="Librería para el acceso a habmaps",
